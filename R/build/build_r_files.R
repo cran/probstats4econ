@@ -25,10 +25,25 @@ r_code_dir <- here("pkgdown/assets/r_files/")
 paths <- character()
 
 write_hook <- function(state, r_code) {
-  filename <- state %>%
-    sprintf("%02d", .) %>%
-    str_c(collapse = "_") %>%
-    str_c(r_code_dir, "ps4e_", ., ".r")
+  is_appendix <- local({
+    a <- attr(state, "appendix")
+    if (is.null(a)) {
+      FALSE
+    } else {
+      a
+    }
+  })
+  filename <- if (is_appendix) {
+    head(state, -1) %>%
+      sprintf("%02d", .) %>%
+      str_c(collapse = "_") %>%
+      str_c(r_code_dir, "ps4e_", ., "_appendix.r")
+  } else {
+    state %>%
+      sprintf("%02d", .) %>%
+      str_c(collapse = "_") %>%
+      str_c(r_code_dir, "ps4e_", ., ".r")
+  }
 
   paths <<- c(paths, filename)
 
@@ -55,6 +70,10 @@ intersperse <- \(l, x) {
 
 code_hook <- function(state, r_code) {
   pluck(code_struct, !!!intersperse(state, "children")) <<- r_code
+  attr(
+    pluck(code_struct, !!!intersperse(state, "children")),
+    "appendix"
+  ) <<- attr(state, "appendix")
 }
 
 build_r_code <- function(line_struct, template) {

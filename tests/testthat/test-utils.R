@@ -69,7 +69,7 @@ test_that("assert R matrix gamma_hat", {
   expect_error(assert_R_matrix_gamma_hat(gamma_hat, bad_matrix))
 })
 
-test_that("assert r vector", {
+test_that("assert c vector", {
   R_matrix <- matrix(1:12, nrow = 4)
   good_matrix <- c(1, 2, 3, 4)
   bad_matrix <- c(1, 2, 3)
@@ -79,10 +79,10 @@ test_that("assert r vector", {
   good_vector <- 1
   bad_vector <- 1:2
 
-  expect_no_error(assert_r_vector(R_matrix, good_matrix))
-  expect_error(assert_r_vector(R_matrix, bad_matrix))
-  expect_no_error(assert_r_vector(R_vector, good_vector))
-  expect_error(assert_r_vector(R_vector, bad_vector))
-  expect_error(assert_r_vector(R_vector, non_numeric))
-  expect_error(assert_r_vector(R_matrix, non_numeric))
+  expect_no_error(assert_c_vector(R_matrix, good_matrix))
+  expect_error(assert_c_vector(R_matrix, bad_matrix))
+  expect_no_error(assert_c_vector(R_vector, good_vector))
+  expect_error(assert_c_vector(R_vector, bad_vector))
+  expect_error(assert_c_vector(R_vector, non_numeric))
+  expect_error(assert_c_vector(R_matrix, non_numeric))
 })

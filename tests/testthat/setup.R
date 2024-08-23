@@ -19,5 +19,5 @@ setup_joint_normal <- function() {
   samples <- matrix(stats::rnorm(2000), ncol = 2) %*% U_Sigma
   gamma_hat <- colMeans(samples)
   var_gamma_hat <- stats::cov(samples) / nrow(samples)
-  list(gamma_hat = gamma_hat, var_gamma_hat = var_gamma_hat)
+  list(gamma_hat = gamma_hat, var_gamma_hat = var_gamma_hat, samples = samples)
 }

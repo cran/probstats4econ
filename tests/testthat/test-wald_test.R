@@ -28,13 +28,13 @@ test_that("Matrix R is handled", {
     m$gamma_hat,
     m$var_gamma_hat,
     R = matrix(c(0, 1, 1, 1), nrow = 2),
-    r = c(900, 1000)
+    c = base::c(900, 1000)
   )
   expect_snapshot(wald)
 })
 
 test_that("No R is handled", {
   m <- setup_slr()
-  wald <- wald_test(m$gamma_hat, m$var_gamma_hat, r = c(900, 1000))
+  wald <- wald_test(m$gamma_hat, m$var_gamma_hat, c = base::c(900, 1000))
   expect_snapshot(wald)
 })

@@ -1,7 +1,7 @@
 Package: probstats4econ
 Title: Companion Package to Probability and Statistics for Economics
         and Business
-Version: 0.2.0
+Version: 0.3.1
 Authors@R: 
     c(person("Jason", "Abrevaya", email = "abrevaya@austin.utexas.edu", role = c("aut", "cph")), # author, copyright holder
     person("Nathan", "Gardner Hattersley", email = "nhattersley@utexas.edu", role = c("aut", "cre"))) # author, maintainer
@@ -13,13 +13,13 @@ LazyData: true
 Depends: R (>= 3.6.0)
 Suggests: testthat (>= 3.0.0), estimatr (>= 1.0.0)
 Config/testthat/edition: 3
-URL: https://www.probstats4econ.com/package.html,
-        https://www.probstats4econ.com/
+URL: https://probstats4econ.com/package.html,
+        https://probstats4econ.com/
 Contact: abrevaya@austin.utexas.edu
 NeedsCompilation: no
-Packaged: 2024-05-22 13:05:01 UTC; nate
+Packaged: 2024-08-23 15:28:37 UTC; nate
 Author: Jason Abrevaya [aut, cph],
   Nathan Gardner Hattersley [aut, cre]
 Maintainer: Nathan Gardner Hattersley <nhattersley@utexas.edu>
 Repository: CRAN
-Date/Publication: 2024-05-23 15:40:08 UTC
+Date/Publication: 2024-08-23 15:40:02 UTC

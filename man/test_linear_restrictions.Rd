@@ -4,7 +4,7 @@
 \alias{test_linear_restrictions}
 \title{Test multiple linear restrictions simultaneously}
 \usage{
-test_linear_restrictions(regresults, R, r = default_test(R))
+test_linear_restrictions(regresults, R, c = default_test(R))
 }
 \arguments{
 \item{regresults}{A list containing two items: \code{coefficients},
@@ -15,7 +15,7 @@ which is the variance-covariance matrix of the coefficient estimates.}
 different linear restriction. R should have the same number of columns
 as \code{length(regresults$coefficients)}.}
 
-\item{r}{A vector of constants, equal to the number of rows in \code{R}.
+\item{c}{A vector of constants, equal to the number of rows in \code{R}.
 This is what we are testing that each linear restriction is equal to.}
 }
 \value{

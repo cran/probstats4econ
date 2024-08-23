@@ -16,19 +16,24 @@ build_struct_recursive <-
            max_depth,
            range = 1:length(.lines)) {
     # \chapter, \section, etc.
-    pattern <- paste0("\\\\", level(cur_depth), "\\{.*\\}")
+    pattern <- paste0("\\\\", level(cur_depth), "((\\{.*\\})|(\\*\\{Appendix.*\\}))")
     matches <- range[grep(pattern, .lines[range])]
 
     # stop or recurse
     if (cur_depth == max_depth) {
-      as.list(matches)
+      map(matches, \(m) {
+        attr(m, "appendix") <- str_detect(.lines[m], "\\*")
+        return(m)
+      })
     } else {
       map2(matches, lead(matches), \(start, end) {
         range <- start:coalesce(end, length(.lines))
-        list(
+        out <- list(
           start = start,
           children = build_struct_recursive(cur_depth + 1, max_depth, range)
         )
+        attr(out, "appendix") <- str_detect(.lines[start], "\\*")
+        return(out)
       })
     }
   }
@@ -39,12 +44,16 @@ walk_struct_recursive <-
            state = c(),
            last_index = length(.lines)) {
     for (i in seq_along(line_struct)) {
+      new_state <- c(state, i)
+      if (length(new_state) > 0) {
+        attr(new_state, "appendix") <- attr(line_struct[[i]], "appendix")
+      }
       if (is.list(line_struct[[i]])) {
         # note: ignoring code between $start and first line of $children for now
         walk_struct_recursive(
           hook,
           line_struct[[i]]$children,
-          c(state, i),
+          new_state,
           ifelse(i == length(line_struct), last_index, line_struct[[i + 1]]$start)
         )
       } else {
@@ -57,7 +66,7 @@ walk_struct_recursive <-
           str_remove_all("## -+.*([a-z\\.]+=[^-,]+,?\\s?)+-+\\n")
 
         if (str_length(r_code) > 0) {
-          hook(c(state, i), r_code)
+          hook(new_state, r_code)
         }
       }
     }

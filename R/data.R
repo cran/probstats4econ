@@ -49,11 +49,10 @@
 #' \describe{
 #'   \item{state}{State abbreviation}
 #'   \item{statename}{State name}
-#'   \item{price_pack}{Average price per pack (in dollars)}
-#'   \item{pack_sales_per_capita}{Annual sales, packs per capita}
-#'   \item{totaltax_pct}{Total tax (federal plus state) per pack, as percent of pack price}
-#'   \item{totaltax_pack}{Total tax (federal plus state) per pack (in dollars)}
-#'   \item{cig_tax_revnue}{Total annual tax revenue (in dollars)}
+#'   \item{cigprice}{Average price per pack (in dollars)}
+#'   \item{cigsales}{Annual sales, packs per capita}
+#'   \item{cig_tax_revenue}{Total annual tax revenue (in dollars)}
+#'   \item{cigtax}{State tax per pack (in dollars)}
 #'   \item{producer}{1 if tobacco production > 20m pounds, 0 otherwise}
 #' }
 #' @source <https://healthdata.gov/dataset/The-Tax-Burden-on-Tobacco-1970-2019/etts-u9ii>
@@ -468,7 +467,7 @@
 #' (home and away) during the season, so there are a total of 38 rounds in
 #' the season and 380 total games.
 #'
-#' @format ## `premier2020`
+#' @format ## `premier`
 #' A data frame with 380 rows and 5 columns:
 #' \describe{
 #'   \item{round}{Round (values 1 to 38)}
@@ -478,7 +477,7 @@
 #'   \item{awaygoals}{Number of goals by the away team}
 #' }
 #' @source <https://en.wikipedia.org/wiki/2020%E2%80%9321_Premier_League>
-"premier2020"
+"premier"
 
 #' Popular names data
 #'
@@ -488,14 +487,16 @@
 #' confidentiality reasons, the minimum count for any name is 5. All other
 #' names (with fewer than 5 occurrences in the U.S.) are included within the
 #' observation having "OTHER" as the name. There are two "OTHER" observations,
-#' one for female babies and one for male babies.
+#' one for female babies and one for male babies. Data are sorted alphabetically
+#' by name.
 #'
-#' @format ## `names2022`
-#' A data frame with 31917 rows and 3 columns:
+#' @format ## `babynames`
+#' A data frame with 31915 rows and 3 columns:
 #' \describe{
 #'   \item{name}{Baby's name}
 #'   \item{gender}{F if female, M if male}
 #'   \item{count}{Number of babies with name and gender}
 #' }
 #' @source <https://www.ssa.gov/oact/babynames/limits.html>
-"names2022"
+"babynames"
+

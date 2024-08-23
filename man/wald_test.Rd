@@ -8,7 +8,7 @@ wald_test(
   gamma_hat,
   var_gamma_hat,
   R = diag(length(gamma_hat)),
-  r = default_test(R)
+  c = default_test(R)
 )
 }
 \arguments{
@@ -19,7 +19,7 @@ wald_test(
 \item{R}{Q x L matrix of linear constraints to be tested.
 Defaults to identity matrix of size L}
 
-\item{r}{Q x 1 vector of test values for the linear constraints.
+\item{c}{Q x 1 vector of test values for the linear constraints.
 Defaults to a vector of zeros of length Q to test that all
 the contrasts are equal to zero.}
 }
@@ -49,7 +49,7 @@ wald_test(
   gamma_hat,
   var_gamma_hat,
   R = matrix(c(0, 1, 1, 1), nrow = 2),
-  r = c(900, 1000)
+  c = c(900, 1000)
 )
 
 }

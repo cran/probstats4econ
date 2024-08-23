@@ -9,7 +9,7 @@
 #' @param R A matrix of linear restrictions. Each row of `R` represents a
 #'  different linear restriction. R should have the same number of columns
 #'  as `length(regresults$coefficients)`.
-#' @param r A vector of constants, equal to the number of rows in `R`.
+#' @param c A vector of constants, equal to the number of rows in `R`.
 #'  This is what we are testing that each linear restriction is equal to.
 #'
 #' @return A list with the following items:
@@ -23,10 +23,10 @@
 #' test_linear_restrictions(model, R)
 #'
 #' @export
-test_linear_restrictions <- function(regresults, R, r = default_test(R)) {
-  force(r)
+test_linear_restrictions <- function(regresults, R, c = default_test(R)) {
+  force(c)
   assert_regresults(regresults)
   assert_R_matrix_regresults(regresults, R)
-  assert_r_vector(R, r)
-  wald_test(regresults$coefficients, regresults$vcov, R, r)
+  assert_c_vector(R, c)
+  wald_test(regresults$coefficients, regresults$vcov, R, c)
 }

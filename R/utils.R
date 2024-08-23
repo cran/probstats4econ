@@ -41,12 +41,12 @@ assert_R_matrix_gamma_hat <- function(gamma_hat, R) {
   stopifnot("`R` must be a vector (matrix) with length (number of rows) equal to `gamma_hat`" = is_valid_R_matrix(gamma_hat, R))
 }
 
-is_valid_r_vector <- function(R, r) {
-  is.numeric(r) && length(r) == ifelse(is.matrix(R), nrow(R), 1)
+is_valid_c_vector <- function(R, c) {
+  is.numeric(c) && length(c) == ifelse(is.matrix(R), nrow(R), 1)
 }
 
-assert_r_vector <- function(R, r) {
-  stopifnot("`r` must be a vector of length equal to the number of rows of `R`" = is_valid_r_vector(R, r))
+assert_c_vector <- function(R, c) {
+  stopifnot("`c` must be a vector of length equal to the number of rows of `R`" = is_valid_c_vector(R, c))
 }
 
 

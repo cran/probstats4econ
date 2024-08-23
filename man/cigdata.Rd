@@ -11,11 +11,10 @@ A data frame with 51 rows and 9 columns:
 \describe{
 \item{state}{State abbreviation}
 \item{statename}{State name}
-\item{price_pack}{Average price per pack (in dollars)}
-\item{pack_sales_per_capita}{Annual sales, packs per capita}
-\item{totaltax_pct}{Total tax (federal plus state) per pack, as percent of pack price}
-\item{totaltax_pack}{Total tax (federal plus state) per pack (in dollars)}
-\item{cig_tax_revnue}{Total annual tax revenue (in dollars)}
+\item{cigprice}{Average price per pack (in dollars)}
+\item{cigsales}{Annual sales, packs per capita}
+\item{cig_tax_revenue}{Total annual tax revenue (in dollars)}
+\item{cigtax}{State tax per pack (in dollars)}
 \item{producer}{1 if tobacco production > 20m pounds, 0 otherwise}
 }
 }

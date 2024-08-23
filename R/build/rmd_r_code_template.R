@@ -13,11 +13,24 @@ state_to_heading <- function(state) {
     stop("Invalid state")
   }
 
-  state_heading <- state |>
-    as.integer() |>
-    glue_collapse(sep = ".")
+  is_appendix <- local({
+    a <- attr(state, "appendix")
+    if (is.null(a)) {
+      FALSE
+    } else {
+      a
+    }
+  })
 
-  glue("{level} {state_heading}") |> to_title_case(sep_in = " ")
+  if (is_appendix) {
+    "Appendix"
+  } else {
+    state_heading <- state |>
+      as.integer() |>
+      glue_collapse(sep = ".")
+
+    glue("{level} {state_heading}") |> to_title_case(sep_in = " ")
+  }
 }
 
 state_to_id <- compose(
@@ -68,6 +81,7 @@ print_struct_recursive <- function(code_struct, state = c()) {
 
   iwalk(code_struct, \(x, i) {
     state <- c(state, i)
+    attr(state, "appendix") <- attr(x, "appendix")
 
     # this points to a line number
     # (aka failed to parse code from this section)
